@@ -18,6 +18,9 @@ target/
 *.iml
 *.ipr
 
+### IntelliJ IDEA Plugin###
+.fastRequest
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
