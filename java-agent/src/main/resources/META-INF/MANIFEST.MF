@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Premain-Class: com.github.agent.PrintAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Can-Set-Native-Method-Prefix: true
+
