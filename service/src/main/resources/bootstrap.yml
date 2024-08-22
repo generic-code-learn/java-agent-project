@@ -2,3 +2,7 @@ port: 8080
 spring:
   application:
     name: qea
+
+logging:
+  level:
+    com.github: info

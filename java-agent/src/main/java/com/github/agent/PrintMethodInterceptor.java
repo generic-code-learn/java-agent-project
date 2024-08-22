@@ -15,11 +15,9 @@ public class PrintMethodInterceptor {
     public static Object intercept(@Origin Method method,
                                    @AllArguments Object[] args,
                                    @SuperCall Callable<?> callable) throws Exception {
-        System.out.println("" + method);
-        System.out.println(Arrays.toString(args));
-        Object call = callable.call();
-        System.out.println(call);
-        return call;
+        System.out.println("方法：" + method);
+        System.out.println("参数：" + Arrays.toString(args));
+        return callable.call();
     }
 
 }
