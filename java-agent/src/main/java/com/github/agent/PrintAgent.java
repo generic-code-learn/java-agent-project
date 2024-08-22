@@ -16,7 +16,6 @@ public class PrintAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("Agent premain Thread " + Thread.currentThread().getName());
         System.out.println("Agent premain ClassLoader " + Thread.currentThread().getContextClassLoader());
-        JavaAgentCommonVersion.printVersion();
         new AgentBuilder.Default()
                 .type(ElementMatchers.nameStartsWith("com.github"))
                 .transform(new MyTransformer())
@@ -34,6 +33,7 @@ public class PrintAgent {
             System.out.println("Agent Transformer Thread " + Thread.currentThread().getName());
             System.out.println("TypeDescription " + typeDescription);
             System.out.println("Agent Transformer ClassLoader " + classLoader);
+            JavaAgentCommonVersion.printVersion();
             Class<?> printClass = null;
             try {
                 printClass = classLoader.loadClass("com.github.agent.common.annotation.Print");
