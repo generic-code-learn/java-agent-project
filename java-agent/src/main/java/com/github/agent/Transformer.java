@@ -1,9 +1,9 @@
 package com.github.agent;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
-import net.bytebuddy.asm.Advice;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
+import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
 import net.bytebuddy.utility.JavaModule;
 import org.slf4j.Logger;
@@ -37,6 +37,6 @@ public class Transformer implements AgentBuilder.Transformer {
             return builder;
         }
         return builder.method(ElementMatchers.isAnnotatedWith((Class<? extends Annotation>) printClass))
-                .intercept(Advice.to(PrintMethodAdvice.class));
+                .intercept(MethodDelegation.to(PrintMethodInterceptor.class));
     }
 }
