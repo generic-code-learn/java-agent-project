@@ -30,7 +30,7 @@ public class ClassPathUtil {
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 String entryName = entry.getName();
-                if (entryName.startsWith(DEFAULT_LIB_LOCATION)) {
+                if (entryName.startsWith(DEFAULT_LIB_LOCATION) && !entry.isDirectory() && entryName.endsWith(".jar")) {
                     urls.add(new URL("jar:" + baseLocation + "!/" + entryName + "!/"));
                 }
             }
