@@ -2,26 +2,19 @@ package com.github.agent;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.security.CodeSource;
+import java.util.logging.Logger;
 
 public class AgentClassLoader extends URLClassLoader {
+    private static final Logger JULOGGER = Logger.getLogger(AgentClassLoader.class.getName());
 
-    private static final URL URL;
-    private static final String DEFAULT_LIB_LOCATION = "lib";
-
-    static {
-        CodeSource codeSource = AgentClassLoader.class.getProtectionDomain().getCodeSource();
-        if (codeSource != null) {
-            URL = codeSource.getLocation();
-            System.out.println("AgentClassLoader URL = " + URL);
-        } else {
-            throw new NoClassDefFoundError();
-        }
+    public AgentClassLoader(URL[] classPathUrl) {
+        this(classPathUrl, ClassLoader.getPlatformClassLoader());
     }
 
-    public AgentClassLoader() {
-        super(new URL[]{URL}, ClassLoader.getPlatformClassLoader());
+    public AgentClassLoader(URL[] classPathUrl, ClassLoader parent) {
+        super(classPathUrl, parent);
     }
+
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
@@ -35,6 +28,7 @@ public class AgentClassLoader extends URLClassLoader {
         }
         return super.loadClass(name);
     }
+
 
     // @Override
     // public Class<?> loadClass(String name) throws ClassNotFoundException {

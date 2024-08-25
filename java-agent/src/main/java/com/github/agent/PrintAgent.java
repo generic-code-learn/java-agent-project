@@ -10,7 +10,7 @@ public class PrintAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("开始执行premain()");
         try {
-            ((Consumer) new AgentClassLoader()
+            ((Consumer) new AgentClassLoader(ClassPathUtil.findClassPath())
                     .loadClass("com.github.agent.BootStartup")
                     .getConstructor()
                     .newInstance())
