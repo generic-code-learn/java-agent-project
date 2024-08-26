@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github</groupId>
-    <artifactId>java-agent-project</artifactId>
+    <artifactId>agent-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>java-agent-project</name>
+    <name>agent-project</name>
     <packaging>pom</packaging>
     <description>meta-lab</description>
 
     <modules>
-        <module>java-agent</module>
-        <module>java-agent-common</module>
+        <module>agent</module>
+        <module>logging</module>
         <module>service</module>
     </modules>
 

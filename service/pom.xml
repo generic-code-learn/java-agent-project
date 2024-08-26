@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.github</groupId>
-        <artifactId>java-agent-project</artifactId>
+        <artifactId>agent-project</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -33,7 +33,7 @@
         </dependency>
         <dependency>
             <groupId>com.github</groupId>
-            <artifactId>java-agent-common</artifactId>
+            <artifactId>logging</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
