@@ -1,6 +1,7 @@
 package com.github.agent;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
+import net.bytebuddy.asm.Advice;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.implementation.MethodDelegation;
@@ -28,17 +29,20 @@ public class Transformer implements AgentBuilder.Transformer {
         // 方式1
         // return builder.method(ElementMatchers.isAnnotatedWith(ElementMatchers.nameStartsWith(PRINT)))
         //         .intercept(MethodDelegation.to(PrintMethodInterceptor.class));
+        // 方式1
+        return builder.visit(Advice.to(PrintMethodAdvice.class)
+                .on(ElementMatchers.isAnnotatedWith(ElementMatchers.nameStartsWith(PRINT_CLASS_NAME))));
         //  方式2
-        Class<?> printClass = null;
-        try {
-            printClass = classLoader.loadClass(PRINT_CLASS_NAME);
-        } catch (ClassNotFoundException e) {
-            LOGGER.error("load class Print failed", e);
-        }
-        if (printClass == null) {
-            return builder;
-        }
-        return builder.method(ElementMatchers.isAnnotatedWith((Class<? extends Annotation>) printClass))
-                .intercept(MethodDelegation.to(PrintMethodInterceptor.class));
+        // Class<?> printClass = null;
+        // try {
+        //     printClass = classLoader.loadClass(PRINT_CLASS_NAME);
+        // } catch (ClassNotFoundException e) {
+        //     LOGGER.error("load class Print failed", e);
+        // }
+        // if (printClass == null) {
+        //     return builder;
+        // }
+        // return builder.method(ElementMatchers.isAnnotatedWith((Class<? extends Annotation>) printClass))
+        //         .intercept(MethodDelegation.to(PrintMethodInterceptor.class));
     }
 }

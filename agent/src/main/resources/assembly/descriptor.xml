@@ -30,9 +30,7 @@
             <outputDirectory>/lib/</outputDirectory>
             <scope>runtime</scope>
             <!--排除自身-->
-            <excludes>
-                <exclude>com.github:java-agent</exclude>
-            </excludes>
+            <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
     </dependencySets>
 </assembly>
